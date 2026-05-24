@@ -2,428 +2,176 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iglesia Sinahi - Comunidad de Fe</title>
-    <!-- Font Awesome 6 (Iconos gratuitos) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            color: #1e2a3e;
-            line-height: 1.6;
-        }
-
-        /* Encabezado con fondo tipo iglesia */
-        .hero {
-            background: linear-gradient(135deg, #2c3e50 0%, #1a2a3a 100%);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero h1 i {
-            color: #f7d44a;
-            margin-right: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Navegación */
-        .navbar {
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 0.8rem 1rem;
-        }
-
-        .nav-btn {
-            background: none;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            margin: 0 0.3rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #2c3e50;
-            border-radius: 40px;
-        }
-
-        .nav-btn i {
-            margin-right: 8px;
-        }
-
-        .nav-btn:hover {
-            background-color: #f0c674;
-            color: #1e2a3e;
-            transform: translateY(-2px);
-        }
-
-        .nav-btn.active {
-            background-color: #d4a017;
-            color: white;
-            box-shadow: 0 2px 8px rgba(212,160,23,0.4);
-        }
-
-        /* Contenido principal */
-        .main-content {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Panel de información dinámica (ventana integrada) */
-        .info-panel {
-            background: white;
-            border-radius: 28px;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.2s ease;
-            border-left: 8px solid #d4a017;
-        }
-
-        .info-panel h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #f7d44a;
-            display: inline-block;
-            margin-bottom: 1rem;
-            padding-bottom: 0.3rem;
-        }
-
-        .info-panel p, .info-panel ul {
-            font-size: 1.1rem;
-            margin-top: 1rem;
-        }
-
-        .info-panel ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .info-panel li {
-            margin: 0.8rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        .info-panel li:before {
-            content: "✝️";
-            position: absolute;
-            left: 0;
-            color: #d4a017;
-        }
-
-        /* Tarjetas de horarios / eventos */
-        .cards-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .card {
-            background: #fef9e6;
-            border-radius: 20px;
-            padding: 1rem 1.5rem;
-            flex: 1 1 200px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        .card i {
-            font-size: 2rem;
-            color: #d4a017;
-        }
-
-        /* Botones sociales flotantes */
-        .social-buttons {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 200;
-        }
-        .social-icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: white;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
-            text-decoration: none;
-        }
-        .social-icon:hover {
-            transform: scale(1.1);
-        }
-        .whatsapp { background-color: #25D366; }
-        .facebook { background-color: #1877F2; }
-        .instagram { background: radial-gradient(circle at 30% 110%, #ffdb7e, #f8ce6f, #e95950, #bc2a8d, #8a3ab9); }
-        .tiktok { background-color: #000000; color: white; }
-
-        /* Ventana modal (emergente) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background: white;
-            max-width: 500px;
-            width: 90%;
-            border-radius: 30px;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            animation: fadeInUp 0.3s;
-        }
-        .modal-content h3 {
-            color: #d4a017;
-            margin-bottom: 1rem;
-        }
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        footer {
-            background: #1e2a3a;
-            color: #ccc;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .info-panel {
-                padding: 1.2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CgrR+k8mp9Z1cd61sZbq7vHfVwZboG8KgtlR3T+zQyzkcwBHUUNyd3RkmN2Xf5Rz4X3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-<div class="hero">
-    <h1><i class="fas fa-church"></i> Iglesia Sinahi</h1>
-    <p>Fe, Esperanza y Comunidad - Un lugar para tu espíritu</p>
-</div>
-
-<div class="navbar">
-    <div class="nav-container">
-        <button class="nav-btn" data-section="inicio"><i class="fas fa-home"></i> Inicio</button>
-        <button class="nav-btn" data-section="nosotros"><i class="fas fa-heart"></i> Nosotros</button>
-        <button class="nav-btn" data-section="servicios"><i class="fas fa-hands-helping"></i> Servicios</button>
-        <button class="nav-btn" data-section="horarios"><i class="fas fa-clock"></i> Horarios</button>
-        <button class="nav-btn" data-section="contacto"><i class="fas fa-envelope"></i> Contacto</button>
-    </div>
-</div>
-
-<div class="main-content">
-    <!-- Panel donde se mostrará la información al presionar botones -->
-    <div id="dynamicPanel" class="info-panel">
-        <h2 id="panelTitle">Bienvenidos a Iglesia Sinahi</h2>
-        <div id="panelBody">
-            <p>Somos una comunidad cristiana abierta a todos. Creemos en el amor, la esperanza y el servicio. Te invitamos a conocer más sobre nuestra iglesia y a participar en nuestras actividades.</p>
-            <div class="cards-container">
-                <div class="card"><i class="fas fa-praying-hands"></i><h3>Oración</h3><p>Todos los días</p></div>
-                <div class="card"><i class="fas fa-bible"></i><h3>Estudio Bíblico</h3><p>Miércoles 7pm</p></div>
-                <div class="card"><i class="fas fa-music"></i><h3>Coro</h3><p>Ensayo viernes</p></div>
+<header id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-copy">
+            <img src="icono.png" alt="Icono iglesia" class="brand-icon">
+            <span class="eyebrow">Bienvenidos</span>
+            <h1>Una iglesia de esperanza, amor y comunidad</h1>
+            <p>Descubre un espacio donde tu familia puede crecer espiritualmente, participar en actividades y conectarse con Dios.</p>
+            <div class="hero-buttons">
+                <button class="hero-btn" data-section="agenda">Agendar visita</button>
+                <button class="hero-btn secondary" data-section="actividades">Ver actividades</button>
+            </div>
+            <div class="hero-social">
+                <a href="https://facebook.com/tupagina" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/tucuenta" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@tuperfil" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="hero-carousel">
+            <div class="carousel-card active">
+                <div class="carousel-icon"><i class="fas fa-church"></i></div>
+                <h3>Tu hogar espiritual</h3>
+                <p>Encuentra un lugar seguro donde crecer en fe.</p>
+            </div>
+            <div class="carousel-card">
+                <div class="carousel-icon"><i class="fas fa-users"></i></div>
+                <h3>Comunión</h3>
+                <p>Actividades para jóvenes, familias y adultos.</p>
+            </div>
+            <div class="carousel-card">
+                <div class="carousel-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3>Servicio</h3>
+                <p>Eventos, campamentos y clases dominicales para todos.</p>
             </div>
         </div>
     </div>
+</header>
 
-    <!-- Botones adicionales de ejemplo que también muestran info (ventana emergente) -->
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0;">
-        <button id="btnEventos" class="nav-btn" style="background:#f0e6d2;"><i class="fas fa-calendar-alt"></i> Próximos Eventos</button>
-        <button id="btnDonaciones" class="nav-btn" style="background:#f0e6d2;"><i class="fas fa-hand-holding-heart"></i> Donaciones</button>
-        <button id="btnTestimonio" class="nav-btn" style="background:#f0e6d2;"><i class="fas fa-comment-dots"></i> Testimonios</button>
+<nav class="navbar">
+    <div class="nav-container">
+        <button class="nav-btn" data-section="inicio">Inicio</button>
+        <button class="nav-btn" data-section="agenda">Agendar visita</button>
+        <button class="nav-btn" data-section="actividades">Actividades</button>
+        <button class="nav-btn" data-section="contacto">Contacto</button>
+    </div>
+</nav>
+
+<main class="main-content">
+    <section class="overview-cards">
+        <article class="overview-card">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h2>Bienvenida</h2>
+            <p>Recibe información clara, colores suaves y un mensaje de bienvenida en primera vista.</p>
+        </article>
+        <article class="overview-card">
+            <i class="fas fa-calendar-check"></i>
+            <h2>Agenda tu visita</h2>
+            <p>Reserva un encuentro con el pastor con un solo clic y contáctanos por WhatsApp.</p>
+        </article>
+        <article class="overview-card">
+            <i class="fas fa-campground"></i>
+            <h2>Eventos y campamentos</h2>
+            <p>Fotos de campamentos y actividades juveniles que muestran la vida de nuestra iglesia.</p>
+        </article>
+        <article class="overview-card">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h2>Clases dominicales</h2>
+            <p>Actividades para niños, jóvenes y adultos, con crecimiento espiritual para cada etapa.</p>
+        </article>
+    </section>
+
+    <section id="agenda" class="section section-panel">
+        <div class="section-copy">
+            <span class="eyebrow">Agendar visita</span>
+            <h2>Habla con el pastor</h2>
+            <p>¿Deseas agendar una visita con el pastor? Haz clic en el ícono de WhatsApp y te responderemos pronto.</p>
+            <button id="btnAgendaVisita" class="action-btn"><i class="fab fa-whatsapp"></i> Agendar visita por WhatsApp</button>
+        </div>
+        <div class="section-image section-image--agenda"></div>
+    </section>
+
+    <section id="actividades" class="section section-activities">
+        <div class="section-header">
+            <div>
+                <span class="eyebrow">Actividades</span>
+                <h2>Explora nuestras áreas</h2>
+                <p>Selecciona un área para ver fotos y descripciones de las actividades de la iglesia.</p>
+            </div>
+        </div>
+        <div class="activity-panel">
+            <div class="activity-buttons">
+                <button class="activity-btn active" data-activity="juveniles">Juveniles</button>
+                <button class="activity-btn" data-activity="campamento">Campamento</button>
+                <button class="activity-btn" data-activity="clases">Clases dominicales</button>
+                <button class="activity-btn" data-activity="adultos">Actividades adultos</button>
+            </div>
+            <div class="activity-details">
+                <div class="sub-buttons hidden" id="subButtonsAdultos">
+                    <button class="sub-btn active" data-detail="reunion">Reunión</button>
+                    <button class="sub-btn" data-detail="culto">Culto general</button>
+                </div>
+                <div class="activity-gallery" id="activityGallery"></div>
+                <div class="detail-gallery hidden" id="detailGallery"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-contact" id="contacto">
+        <span class="eyebrow">Contacto</span>
+        <h2>Conéctate con nosotros</h2>
+        <p>Facebook, Instagram, TikTok y WhatsApp siempre disponibles para ti.</p>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fab fa-facebook-f"></i>
+                <h3>Facebook</h3>
+                <p>Comparte eventos y noticias en nuestra página oficial.</p>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-instagram"></i>
+                <h3>Instagram</h3>
+                <p>Fotos y momentos de la iglesia en comunidad.</p>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-tiktok"></i>
+                <h3>TikTok</h3>
+                <p>Videos cortos de actividades, música y testimonios.</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Visítanos</h3>
+                <p>Av. Fe y Esperanza #123 | Sinahi City</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="whatsappModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-body">
+            <i class="fab fa-whatsapp"></i>
+            <h3>Agendar visita con el pastor</h3>
+            <p>¿Deseas agendar una visita con el pastor? Dale click al icono y te esperamos.</p>
+            <a href="https://wa.me/59170000000?text=Hola%20Pastor,%20quiero%20agendar%20una%20visita" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp</a>
+        </div>
     </div>
 </div>
 
 <footer>
-    <p>Iglesia Sinahi - Un encuentro con Dios | Av. Fe y Esperanza #123</p>
-    <p style="font-size: 0.8rem;">&copy; 2025 - Comunidad abierta para todo el mundo</p>
+    <div class="footer-top">
+        <div>
+            <h3>Iglesia Sinahi</h3>
+            <p>Un lugar de fe, servicio y vida en comunidad.</p>
+        </div>
+        <div class="footer-links">
+            <a href="https://facebook.com/tupagina" target="_blank">Facebook</a>
+            <a href="https://instagram.com/tucuenta" target="_blank">Instagram</a>
+            <a href="https://tiktok.com/@tuperfil" target="_blank">TikTok</a>
+        </div>
+    </div>
+    <p class="footer-copy">&copy; 2025 Iglesia Sinahi. Todos los derechos reservados.</p>
 </footer>
 
-<!-- Botones flotantes Redes Sociales con enlaces (cambia los # por tus URLs reales) -->
-<div class="social-buttons">
-    <a href="https://wa.me/59170000000?text=Hola%20Iglesia%20Sinahi" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://facebook.com/tupagina" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://instagram.com/tucuenta" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://tiktok.com/@tuperfil" target="_blank" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
-</div>
-
-<!-- Modal (Ventana emergente) para información extra -->
-<div id="infoModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3 id="modalTitle">Información</h3>
-        <p id="modalMessage">Contenido dinámico.</p>
-    </div>
-</div>
-
-<script>
-    // -------- CONTENIDO DINÁMICO para cada botón del menú (sección) ----------
-    const contenidoSecciones = {
-        inicio: {
-            titulo: "✝️ Inicio - Iglesia Sinahi",
-            cuerpo: `<p>Bienvenido a nuestra casa de paz. Somos una iglesia que acoge a todos sin distinción. Nuestro principal objetivo es compartir el amor de Cristo y ayudar a la comunidad.</p>
-                     <div class="cards-container">
-                        <div class="card"><i class="fas fa-praying-hands"></i><h3>Oración</h3><p>Todos los días 6am</p></div>
-                        <div class="card"><i class="fas fa-bible"></i><h3>Estudio Bíblico</h3><p>Miércoles 7pm</p></div>
-                        <div class="card"><i class="fas fa-music"></i><h3>Coro</h3><p>Ensayo viernes 6pm</p></div>
-                    </div>
-                    <p><i class="fas fa-globe"></i> Transmisión en vivo por YouTube y Facebook.</p>`
-        },
-        nosotros: {
-            titulo: "🙏 ¿Quiénes Somos?",
-            cuerpo: `<p>Iglesia Sinahi nació en 2010 con el sueño de llevar esperanza a cada hogar. Contamos con pastores comprometidos, grupos de jóvenes, niños y adultos mayores. Nuestro lema: "Sinahi, un solo corazón en Cristo".</p>
-                     <ul><li>Misión: Transformar vidas mediante el evangelio.</li><li>Visión: Ser una iglesia de impacto internacional.</li><li>Valores: Amor, integridad, servicio.</li></ul>`
-        },
-        servicios: {
-            titulo: "🕯️ Servicios y Ministerios",
-            cuerpo: `<p>Ofrecemos diferentes servicios para la comunidad:</p>
-                    <ul><li>Consejería familiar y espiritual.</li><li>Ayuda social (comedor y ropero comunitario).</li><li>Clases de música cristiana.</li><li>Escuela bíblica para niños y adolescentes.</li></ul>
-                    <p>Todo es gratuito y abierto a todos.</p>`
-        },
-        horarios: {
-            titulo: "⏰ Horarios de Culto",
-            cuerpo: `<div class="cards-container">
-                        <div class="card"><i class="fas fa-sun"></i><h3>Domingo</h3><p>10:00am - Culto Principal</p><p>6:00pm - Culto Joven</p></div>
-                        <div class="card"><i class="fas fa-church"></i><h3>Miércoles</h3><p>7:00pm - Estudio Bíblico</p></div>
-                        <div class="card"><i class="fas fa-users"></i><h3>Sábado</h3><p>4:00pm - Escuela de Líderes</p></div>
-                    </div>
-                    <p>Dirección: Calle Principal #123, Sinahi City. ¡Te esperamos!</p>`
-        },
-        contacto: {
-            titulo: "📞 Contáctanos",
-            cuerpo: `<p>Puedes escribirnos o visitarnos. Aquí nuestros canales oficiales:</p>
-                    <ul><li><i class="fas fa-phone-alt"></i> Teléfono: +591 71234567</li>
-                    <li><i class="fas fa-envelope"></i> Email: contacto@iglesiasinahi.org</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Dirección: Av. Fe y Esperanza, Sinahi Centro</li></ul>
-                    <p>Oficina abierta Lunes a Viernes de 9am a 5pm.</p>`
-        }
-    };
-
-    // Función para actualizar panel principal según la sección
-    function cargarSeccion(seccionId) {
-        const data = contenidoSecciones[seccionId];
-        if(data) {
-            document.getElementById('panelTitle').innerHTML = data.titulo;
-            document.getElementById('panelBody').innerHTML = data.cuerpo;
-            // Marcar botón activo en navbar
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.getAttribute('data-section') === seccionId) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-        }
-    }
-
-    // Eventos para los botones del menú principal
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const section = btn.getAttribute('data-section');
-            if(section) cargarSeccion(section);
-        });
-    });
-
-    // ------------------ VENTANA MODAL (emergente) para botones extra ------------------
-    const modal = document.getElementById('infoModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMessage = document.getElementById('modalMessage');
-    const closeModalSpan = document.querySelector('.close-modal');
-
-    function mostrarModal(titulo, mensajeHtml) {
-        modalTitle.innerText = titulo;
-        modalMessage.innerHTML = mensajeHtml;
-        modal.style.display = 'flex';
-    }
-
-    // Botón Eventos
-    document.getElementById('btnEventos').addEventListener('click', () => {
-        mostrarModal('📅 Próximos Eventos', 
-            '<ul style="text-align:left"><li>🔸 12 de Mayo - Retiro Espiritual en la montaña.</li><li>🔸 20 de Mayo - Concierto de alabanza.</li><li>🔸 30 de Mayo - Cena de la familia Sinahi.</li></ul><p>¡Inscríbete en la entrada principal!</p>');
-    });
-    // Botón Donaciones
-    document.getElementById('btnDonaciones').addEventListener('click', () => {
-        mostrarModal('🤝 Donaciones', 
-            '<p>Puedes colaborar con nuestra obra social a través de:</p><p><strong>Banco Union:</strong> Cuenta 100-1234567<br><strong>PayPal:</strong> donaciones@iglesiasinahi.org<br><strong>Yape / QR en la iglesia.</strong></p><p>¡Gracias por tu generosidad!</p>');
-    });
-    // Botón Testimonios
-    document.getElementById('btnTestimonio').addEventListener('click', () => {
-        mostrarModal('✨ Testimonios', 
-            '<p><i class="fas fa-quote-left"></i> <em>“Llegué a Iglesia Sinahi cuando más lo necesitaba, y aquí encontré una familia. Mi vida cambió completamente.”</em> - María G.</p><p><i class="fas fa-quote-left"></i> <em>“Los pastores son unos ángeles, su ayuda fue vital en mi enfermedad.”</em> - Carlos R.</p><p>Comparte tu testimonio con nosotros por WhatsApp.</p>');
-    });
-
-    // Cerrar modal: haciendo click en la X o fuera del contenido
-    closeModalSpan.onclick = () => modal.style.display = 'none';
-    window.onclick = (event) => { if(event.target === modal) modal.style.display = 'none'; };
-
-    // Al cargar, mostrar sección Inicio por defecto
-    cargarSeccion('inicio');
-
-    // También asignamos comportamiento para los enlaces de redes sociales (los href ya están)
-    // Solo agregar alerta opcional si deseas confirmar: 
-    console.log("Iglesia Sinahi - Lista para compartir la fe internacionalmente");
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
