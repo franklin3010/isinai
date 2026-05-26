@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iglesia Sinahi</title>
+    <title>Iglesia Sinahi - Comunidad de Fe</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CgrR+k8mp9Z1cd61sZbq7vHfVwZboG8KgtlR3T+zQyzkcwBHUUNyd3RkmN2Xf5Rz4X3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
+<!-- HEADER/HERO -->
 <header id="inicio" class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -19,12 +20,12 @@
             <p>Descubre un espacio donde tu familia puede crecer espiritualmente, participar en actividades y conectarse con Dios.</p>
             <div class="hero-buttons">
                 <button class="hero-btn" data-section="agenda">Agendar visita</button>
-                <button class="hero-btn secondary" data-section="actividades">Ver actividades</button>
+                <button class="hero-btn secondary" data-section="galeria">Ver galería</button>
             </div>
             <div class="hero-social">
-                <a href="https://facebook.com/tupagina" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com/tucuenta" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://tiktok.com/@tuperfil" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://facebook.com/tupagina" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/tucuenta" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@tuperfil" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
         <div class="hero-carousel">
@@ -47,16 +48,26 @@
     </div>
 </header>
 
-<nav class="navbar">
+<!-- NAVBAR MOBILE TOGGLE -->
+<button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
     <div class="nav-container">
         <button class="nav-btn" data-section="inicio">Inicio</button>
         <button class="nav-btn" data-section="agenda">Agendar visita</button>
-        <button class="nav-btn" data-section="actividades">Actividades</button>
+        <button class="nav-btn" data-section="galeria">Galería</button>
         <button class="nav-btn" data-section="contacto">Contacto</button>
     </div>
 </nav>
 
+<!-- MAIN CONTENT -->
 <main class="main-content">
+    <!-- OVERVIEW CARDS -->
     <section class="overview-cards">
         <article class="overview-card">
             <i class="fas fa-hand-holding-heart"></i>
@@ -80,6 +91,7 @@
         </article>
     </section>
 
+    <!-- AGENDAR VISITA -->
     <section id="agenda" class="section section-panel">
         <div class="section-copy">
             <span class="eyebrow">Agendar visita</span>
@@ -90,25 +102,76 @@
         <div class="section-image section-image--agenda"></div>
     </section>
 
+    <!-- GALERÍA CON CARRUSEL -->
+    <section id="galeria" class="section section-galeria">
+        <div class="section-header">
+            <span class="eyebrow">Galería</span>
+            <h2>Momentos especiales</h2>
+            <p>Revisa nuestras fotos y videos de eventos, campamentos y actividades.</p>
+        </div>
+
+        <!-- TABS/BOTONES -->
+        <div class="galeria-tabs">
+            <button class="tab-btn active" data-tab="juveniles">
+                <i class="fas fa-guitar"></i>
+                <span>Juveniles</span>
+            </button>
+            <button class="tab-btn" data-tab="campamento">
+                <i class="fas fa-campground"></i>
+                <span>Campamento</span>
+            </button>
+            <button class="tab-btn" data-tab="clases">
+                <i class="fas fa-book-open"></i>
+                <span>Clases</span>
+            </button>
+            <button class="tab-btn" data-tab="adultos">
+                <i class="fas fa-users"></i>
+                <span>Adultos</span>
+            </button>
+            <button class="tab-btn" data-tab="eventos">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Eventos</span>
+            </button>
+        </div>
+
+        <!-- CARRUSEL DE IMÁGENES (máximo 5) -->
+        <div class="carrusel-container">
+            <div class="carrusel-wrapper">
+                <div class="carrusel" id="carrusel">
+                    <!-- Las imágenes se cargarán dinámicamente con JavaScript -->
+                </div>
+                <button class="carrusel-btn prev" id="prevBtn" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carrusel-btn next" id="nextBtn" aria-label="Siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <!-- INDICADORES DE PUNTOS -->
+            <div class="carrusel-dots" id="carruselDots"></div>
+        </div>
+    </section>
+
+    <!-- ACTIVIDADES -->
     <section id="actividades" class="section section-activities">
         <div class="section-header">
             <div>
                 <span class="eyebrow">Actividades</span>
-                <h2>Explora nuestras áreas</h2>
-                <p>Selecciona un área para ver fotos y descripciones de las actividades de la iglesia.</p>
+                <h2>Nuestros programas</h2>
+                <p>Conoce las actividades especiales que ofrecemos para cada grupo.</p>
             </div>
         </div>
         <div class="activity-panel">
             <div class="activity-buttons">
                 <button class="activity-btn active" data-activity="juveniles">Juveniles</button>
                 <button class="activity-btn" data-activity="campamento">Campamento</button>
-                <button class="activity-btn" data-activity="clases">Clases dominicales</button>
-                <button class="activity-btn" data-activity="adultos">Actividades adultos</button>
+                <button class="activity-btn" data-activity="clases">Clases</button>
+                <button class="activity-btn" data-activity="adultos">Adultos</button>
             </div>
             <div class="activity-details">
                 <div class="sub-buttons hidden" id="subButtonsAdultos">
                     <button class="sub-btn active" data-detail="reunion">Reunión</button>
-                    <button class="sub-btn" data-detail="culto">Culto general</button>
+                    <button class="sub-btn" data-detail="culto">Culto</button>
                 </div>
                 <div class="activity-gallery" id="activityGallery"></div>
                 <div class="detail-gallery hidden" id="detailGallery"></div>
@@ -116,35 +179,55 @@
         </div>
     </section>
 
+    <!-- CONTACTO -->
     <section class="section section-contact" id="contacto">
         <span class="eyebrow">Contacto</span>
         <h2>Conéctate con nosotros</h2>
-        <p>Facebook, Instagram, TikTok y WhatsApp siempre disponibles para ti.</p>
+        <p>Síguenos en nuestras redes sociales y mantente conectado con nuestra comunidad.</p>
+        
+        <!-- REDES SOCIALES GRANDES -->
+        <div class="social-links-main">
+            <a href="https://facebook.com/tupagina" target="_blank" class="social-link facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </a>
+            <a href="https://instagram.com/tucuenta" target="_blank" class="social-link instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <a href="https://tiktok.com/@tuperfil" target="_blank" class="social-link tiktok">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+        </div>
+
+        <!-- INFORMACIÓN DE CONTACTO -->
         <div class="contact-grid">
             <div class="contact-card">
-                <i class="fab fa-facebook-f"></i>
-                <h3>Facebook</h3>
-                <p>Comparte eventos y noticias en nuestra página oficial.</p>
-            </div>
-            <div class="contact-card">
-                <i class="fab fa-instagram"></i>
-                <h3>Instagram</h3>
-                <p>Fotos y momentos de la iglesia en comunidad.</p>
-            </div>
-            <div class="contact-card">
-                <i class="fab fa-tiktok"></i>
-                <h3>TikTok</h3>
-                <p>Videos cortos de actividades, música y testimonios.</p>
-            </div>
-            <div class="contact-card">
                 <i class="fas fa-map-marker-alt"></i>
-                <h3>Visítanos</h3>
-                <p>Av. Fe y Esperanza #123 | Sinahi City</p>
+                <h3>Ubicación</h3>
+                <p>Av. Fe y Esperanza #123<br>Sinahi City</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Teléfono</h3>
+                <p>+591 7000 0000<br>+591 7111 1111</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>info@sinahi.com<br>contacto@sinahi.com</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-clock"></i>
+                <h3>Horarios</h3>
+                <p>Domingo: 9:00 AM - 12:00 PM<br>Miércoles: 7:00 PM - 9:00 PM</p>
             </div>
         </div>
     </section>
 </main>
 
+<!-- MODAL WHATSAPP -->
 <div id="whatsappModal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
@@ -157,21 +240,22 @@
     </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
     <div class="footer-top">
         <div>
             <h3>Iglesia Sinahi</h3>
             <p>Un lugar de fe, servicio y vida en comunidad.</p>
         </div>
-        <div class="footer-links">
-            <a href="https://facebook.com/tupagina" target="_blank">Facebook</a>
-            <a href="https://instagram.com/tucuenta" target="_blank">Instagram</a>
-            <a href="https://tiktok.com/@tuperfil" target="_blank">TikTok</a>
+        <div class="footer-social">
+            <a href="https://facebook.com/tupagina" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/tucuenta" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@tuperfil" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
     </div>
     <p class="footer-copy">&copy; 2025 Iglesia Sinahi. Todos los derechos reservados.</p>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
